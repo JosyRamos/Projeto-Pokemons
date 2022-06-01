@@ -9,9 +9,9 @@
         placeholder="Chamander"
         solo>
         </v-text-field>
-        {{search}}
+  
         <v-row>
-          <v-col cols="2" v-for="pokemon in pokemons.slice(0,50)" :key="pokemon.name">
+          <v-col cols="2" v-for="pokemon in filtered_pokemons " :key="pokemon.name">
             <v-card>
               <v-container>
               <v-row class="mx-0 d-flex justify-center">
@@ -50,9 +50,8 @@ export default {
   },
   computed:{
     filtered_pokemons(){
-      return this.pokemons;
       return this.pokemons.filter((item)=>{
-        item.name.includes(this.search);
+        return item.name.includes(this.search);
       })
 
     }
